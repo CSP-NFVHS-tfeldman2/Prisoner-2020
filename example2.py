@@ -6,9 +6,9 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'E2'
-strategy_name = 'Alternate'
-strategy_description = 'Collude, then alternate.'
+team_name = 'JK'
+strategy_name = 'The JK Strat'
+strategy_description = 'Revenge'
     
 def move(my_history, their_history, my_score, their_score):
     '''Make my move based on the history with this player.
@@ -21,8 +21,15 @@ def move(my_history, their_history, my_score, their_score):
     Returns 'c' or 'b' for collude or betray.
     '''
     # This player colludes on even numbered rounds (first round is round #0).
-    if len(my_history)%2 == 0:
-        return 'c'
-    else:
+    if len(my_history) == 0:
         return 'b'
+    else:
+        if their_history[-1]=='c' and my_history[-1]=='b':
+            return 'b'
+        else:
+            if their_history[-1]=='c' and my_history[-1]=='c':
+                return 'c'
+            if 'b' in their_history[-1]=='b' and my_history[-1]=='c':
+                return 'b'
+                
     
